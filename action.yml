@@ -9,10 +9,23 @@ inputs:
     description: 'Label of the analysis'
     required: false
     default: ' '
+  userid:
+    description: 'Username for kiuwan platform'
+    required: true
+  password:
+    description: 'Password for kiuwan platform'
+    required: true
 
 branding:
   color: 'green'
   icon: 'codesandbox'
 
 runs:
-  #falta todo esto... puf
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.project }}
+    - ${{ inputs.label }}
+    - ${{ inputs.userid }}
+    - ${{ inputs.password }}
+    
