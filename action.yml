@@ -1,28 +1,18 @@
-name: Kiuwan Baseline Analysis
+name: 'Kiuwan Baseline Analysis'
+author: 'Luis Sanchez'
+description: 'Run Kiuwan Baseline analysis on the selected set of code'
+inputs:
+  project:
+    description: 'Name of Kiuwan project'
+    required: true
+  label:
+    description: 'Label of the analysis'
+    required: false
+    default: ' '
 
-on: [push]
+branding:
+  color: 'green'
+  icon: 'codesandbox'
 
-env:
-  PROJECT: ${{ github.repository }}
-  USER: ${{ secrets.KIUWAN_USER }}
-  PASS: ${{ secrets.KIUWAN_PASS }}
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Execute things
-      run: java -version
-    - name: Get Kiuwan
-      run: wget -v https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
-    - name: Unzip Kiuwan
-      run: unzip KiuwanLocalAnalyzer.zip -d $HOME/.
-    - name: Execute Kiuwan Baseline
-      run: $HOME/KiuwanLocalAnalyzer/bin/agent.sh --user $USER --pass $PASS -s $GITHUB_WORKSPACE -n $PROJECT -c -l $GITHUB_SHA
+runs:
+  #falta todo esto... puf
