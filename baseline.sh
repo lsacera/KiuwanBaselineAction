@@ -42,4 +42,4 @@ wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
 # Unzip Kiuwan local analyzer
 unzip KiuwanLocalAnalyzer.zip -d $HOME/.
 # Execute Kiuwan Baseline
-$HOME/KiuwanLocalAnalyzer/bin/agent.sh --user $INPUT_USERID --pass $INPUT_PASSWORD -s $GITHUB_WORKSPACE -n $INPUT_PROJECT -c -l $INPUT_LABEL
+$HOME/KiuwanLocalAnalyzer/bin/agent.sh --user $INPUT_USERID --pass $INPUT_PASSWORD --sourcePath $GITHUB_WORKSPACE --softwareName $INPUT_PROJECT --create --label $INPUT_LABEL
