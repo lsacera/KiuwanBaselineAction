@@ -37,4 +37,9 @@ echo $RUNNER_WORKSPACE
 echo $ACTIONS_RUNTIME_URL
 echo $ACTIONS_RUNTIME_TOKEN
 
-
+# Download Kiuwan local analyzer
+wget -v https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
+# Unzip Kiuwan local analyzer
+unzip KiuwanLocalAnalyzer.zip -d $HOME/.
+# Execute Kiuwan Baseline
+$HOME/KiuwanLocalAnalyzer/bin/agent.sh --user $INPUT_USERID --pass $INPUT_PASSWORD -s $GITHUB_WORKSPACE -n $INPUT_PROJECT -c -l $INPUT_LABEL
