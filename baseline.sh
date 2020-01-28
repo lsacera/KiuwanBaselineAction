@@ -38,7 +38,7 @@ echo $ACTIONS_RUNTIME_URL
 echo $ACTIONS_RUNTIME_TOKEN
 
 # Download Kiuwan local analyzer
-wget -v https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
+wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
 # Unzip Kiuwan local analyzer
 unzip KiuwanLocalAnalyzer.zip -d $HOME/.
 # Execute Kiuwan Baseline
