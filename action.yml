@@ -1,5 +1,5 @@
 name: 'Kiuwan Baseline Analysis'
-author: 'Luis Sanchez'
+author: 'Kiuwan'
 description: 'Run Kiuwan Baseline analysis on the selected set of code'
 inputs:
   project:
