@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>KiuwanActions</name>
-	<comment></comment>
+	<comment>Github action to invoke a Baseline Analysis in the workspace</comment>
 	<projects>
 	</projects>
 	<buildSpec>
