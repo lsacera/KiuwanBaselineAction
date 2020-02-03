@@ -22,7 +22,7 @@ outputs:
 
 branding:
   color: 'green'
-  icon: 'codesandbox'
+  icon: 'code'
 
 runs:
   using: 'docker'
