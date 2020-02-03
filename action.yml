@@ -27,10 +27,3 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.project }}
-    - ${{ inputs.label }}
-    - ${{ inputs.userid }}
-    - ${{ inputs.password }}
-
-    
