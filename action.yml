@@ -16,6 +16,10 @@ inputs:
     description: 'Password for kiuwan platform'
     required: true
 
+outputs:
+  result:
+    description: 'Return code of the execution of kiuwan'
+
 branding:
   color: 'green'
   icon: 'codesandbox'
