@@ -1,6 +1,9 @@
 # Container image that runs kiuwan, uses the alpine image with java installed
 FROM openjdk:8-jre-alpine
 
+#download kiuwan local analyzer to home and unzip it
+RUN wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip && unzip KiuwanLocalAnalyzer.zip -d $HOME/.
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY baseline.sh /baseline.sh
 
