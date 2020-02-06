@@ -1,9 +1,9 @@
 #!/bin/sh -l
 
 # Download Kiuwan local analyzer
-wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
+#wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip
 # Unzip Kiuwan local analyzer
-unzip KiuwanLocalAnalyzer.zip -d $HOME/.
+#unzip KiuwanLocalAnalyzer.zip -d $HOME/.
 # Execute Kiuwan Baseline. 
 # TODO: remove the echoes in a later release
 echo "Executing analyzer with: "
