@@ -13,7 +13,7 @@ echo "--sourcePath" $GITHUB_WORKSPACE
 echo "--softwareName" $INPUT_PROJECT 
 echo "--create"
 echo "--label " $INPUT_LABEL
-python2 -V
+python -V
 /kla/KiuwanLocalAnalyzer/bin/agent.sh --user $INPUT_USERID --pass $INPUT_PASSWORD --sourcePath \"$GITHUB_WORKSPACE\" --softwareName \"$INPUT_PROJECT\" --create --label \"$INPUT_LABEL\"
 #Return value, if neccesary
 echo $?
