@@ -1,5 +1,6 @@
 # Container image that runs kiuwan, uses the alpine image with openjdk installed
-FROM openjdk:8-jre-alpine
+#FROM openjdk:8-jre-alpine
+FROM openkbs/jre-mvn-py
 
 #download kiuwan local analyzer to home and unzip it
 RUN mkdir /kla && wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip && unzip KiuwanLocalAnalyzer.zip -d /kla/.
