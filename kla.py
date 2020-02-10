@@ -97,6 +97,9 @@ def ExecuteKLA(cmd):
 
 
 
+print(os.getenv('INPUT_PROJECT'))
+print('Hola caracola' )
+
 # Extract and download KLA from kiuwan.com (or from on-premise site)
 DownloadAndExtractKLA(tmp_dir='kaka')
 
