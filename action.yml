@@ -15,10 +15,29 @@ inputs:
   password:
     description: 'Password for kiuwan platform'
     required: true
+  includepatterns:
+    description: 'List of comma separated folder expressions to include in the analysis. Example: **/test/**'
+    required: false
+  excludepatterns:
+    description: 'List of comma separated folder expressions to exclude from the analisis. Example: **/test/**'
+    required: false
+  databasetype:
+    description: 'Database type files in the project, if any. Can be one of [none, transacsql, plsql, informix]'
+    required: false
+  maxmemory:
+    description: 'maximum memory allocated for java virtual machine heap, in megabytes. Example: 2048'
+    required: false
+    default: '1024'
+  timeout:
+    description: 'maximum time (in minutes) that the analysis is going to run before stopping.'
+    required: false
+    default: '60'
 
 outputs:
   result:
     description: 'Return code of the execution of kiuwan'
+  analysisurl:
+    description: 'URL of the executed analysis'
 
 branding:
   color: 'green'
