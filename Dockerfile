@@ -9,10 +9,10 @@ FROM openkbs/jre-mvn-py
 #COPY baseline.sh /baseline.sh
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY kla.py ./kla.py 
+COPY kla.py /kla.py 
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 RUN wget https://bootstrap.pypa.io/get-pip.py && chmod +x ./get-pip.py && ./get-pip.py && pip install requests 
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT [./kla.py]
+ENTRYPOINT [/kla.py]
