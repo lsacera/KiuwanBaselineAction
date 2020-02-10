@@ -9,6 +9,9 @@ import os
 import sys
 import stat
 
+#print environment
+print (os.environ)
+
 #PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
 #PARAM_KLA_PASSWORD = 'password.0'
 #PARAM_KLA_APPNAME = 'pepe'
