@@ -12,4 +12,4 @@ FROM openkbs/jre-mvn-py
 #COPY kla.py ./kla.py 
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-RUN wget https://bootstrap.pypa.io/get-pip.py && ./get-pip.py && pip -V
+RUN wget https://bootstrap.pypa.io/get-pip.py && chmod +x ./get-pip.py && ./get-pip.py && pip -V
