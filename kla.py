@@ -16,13 +16,26 @@ import stat
 #PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
 #PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
 
+#Params used in the call to the baseline analysis. TODO: check the parameters...
 PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
 PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD'] 
 PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT'] 
 PARAM_KLA_SOURCEDIR = os.environ['GITHUB_WORKSPACE'] 
-PARAM_KLA_MAXMEMORY = 'memory.max=2048m' #TODO: esto es tan importante??
+PARAM_KLA_MAXMEMORY = 'memory.max=' + os.environ['INPUT_MAXMEMORY'] + 'm' 
+PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT']
 
-print(os.environ)
+#Remaining params to define and check
+PARAM_KLA_INCLUDEPATTERNS = os.environ['INPUT_INCLUDEPATTERNS']
+PARAM_KLA_EXCLUDEPATTERNS = os.environ['INPUT_EXCLUDEPATTERNS']
+PARAM_KLA_TIMEOUT = os.environ['INPUT_TIMEOUT']
+PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
+
+#Log parameters
+ print '{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}'.format('user: 'PARAM_KLA_USERNAME, ' appname: ',PARAM_KLA_APPNAME,
+                                                 ' sourcedir: ',PARAM_KLA_SOURCEDIR ,' maxmem: ', PARAM_KLA_MAXMEMORY,
+                                                 ' includes: ',PARAM_KLA_INCLUDEPATTERNS,
+                                                 ' excludes: ',PARAM_KLA_EXCLUDEPATTERNS ,' timeout: ',PARAM_KLA_TIMEOUT,
+                                                 ' database: ',PARAM_KLA_DATABASETYPE)
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
 TMP_EXTRACTION_DIR = 'temp'
@@ -103,16 +116,11 @@ def ExecuteKLA(cmd):
     rc = pipe.wait()
     return output, rc
 
-
-
-print(os.getenv('INPUT_PROJECT'))
-print('Hola caracola' )
-
 # Extract and download KLA from kiuwan.com (or from on-premise site)
-DownloadAndExtractKLA(tmp_dir='kaka')
+DownloadAndExtractKLA(tmp_dir='kla')
 
 # Build the KLA CLI command
-kla_bl_cmd = GetKLACmd(tmp_dir='kaka', mem=PARAM_KLA_MAXMEMORY)
+kla_bl_cmd = GetKLACmd(tmp_dir='kla', mem=PARAM_KLA_MAXMEMORY)
 
 # Execute CLA KLI
 output, rc = ExecuteKLA(kla_bl_cmd)
