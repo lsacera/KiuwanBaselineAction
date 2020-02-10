@@ -30,11 +30,7 @@ PARAM_KLA_TIMEOUT = os.environ['INPUT_TIMEOUT']
 PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
 
 #Log parameters
- print '{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}'.format('user: 'PARAM_KLA_USERNAME, ' appname: ',PARAM_KLA_APPNAME,
-                                                 ' sourcedir: ',PARAM_KLA_SOURCEDIR ,' maxmem: ', PARAM_KLA_MAXMEMORY,
-                                                 ' includes: ',PARAM_KLA_INCLUDEPATTERNS,
-                                                 ' excludes: ',PARAM_KLA_EXCLUDEPATTERNS ,' timeout: ',PARAM_KLA_TIMEOUT,
-                                                 ' database: ',PARAM_KLA_DATABASETYPE)
+print '{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}'.format('user: 'PARAM_KLA_USERNAME, ' appname: ',PARAM_KLA_APPNAME,' sourcedir: ',PARAM_KLA_SOURCEDIR ,' maxmem: ', PARAM_KLA_MAXMEMORY,' includes: ',PARAM_KLA_INCLUDEPATTERNS,' excludes: ',PARAM_KLA_EXCLUDEPATTERNS ,' timeout: ',PARAM_KLA_TIMEOUT,' database: ',PARAM_KLA_DATABASETYPE)
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
 TMP_EXTRACTION_DIR = '/kla'
