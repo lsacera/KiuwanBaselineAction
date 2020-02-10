@@ -7,7 +7,6 @@ import json
 import base64
 import os
 import sys
-import platform
 import stat
 
 #PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
@@ -38,7 +37,7 @@ PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
                                                  ' database: ',PARAM_KLA_DATABASETYPE)
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
-TMP_EXTRACTION_DIR = 'temp'
+TMP_EXTRACTION_DIR = '/kla'
 KLA_EXE_DIR = TMP_EXTRACTION_DIR + "/KiuwanLocalAnalyzer/bin"
 
 
@@ -49,14 +48,9 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
                password=PARAM_KLA_PASSWORD,
                mem='1024m'):
 
-    prefix = os.getcwd() + '\\' + tmp_dir + '\\KiuwanLocalAnalyzer\\bin\\'
-    if platform.system() == 'Windows':
-        #prefix = os.getcwd() + '\\' + tmp_dir + '\\KiuwanLocalAnalyzer\\bin\\'
-        agent = prefix + 'agent.cmd'
-    else:
-        agent = prefix + 'agent.sh'
-        agent = r'%s' % agent.replace('\\','/')
-        os.chmod(agent, stat.S_IRWXU)
+    prefix = tmp_dir + '/KiuwanLocalAnalyzer/bin/'
+    agent = prefix + 'agent.sh'
+    os.chmod(agent, stat.S_IRWXU)
 
     #osgetcwd = r'%s' % os.getcwd().replace('\\','/')
     #prefix = osgetcwd + '/' + temp + '/KiuwanLocalAnalyzer/bin'
@@ -117,10 +111,10 @@ def ExecuteKLA(cmd):
     return output, rc
 
 # Extract and download KLA from kiuwan.com (or from on-premise site)
-DownloadAndExtractKLA(tmp_dir='kla')
+DownloadAndExtractKLA(tmp_dir='/kla')
 
 # Build the KLA CLI command
-kla_bl_cmd = GetKLACmd(tmp_dir='kla', mem=PARAM_KLA_MAXMEMORY)
+kla_bl_cmd = GetKLACmd(tmp_dir='/kla', mem=PARAM_KLA_MAXMEMORY)
 
 # Execute CLA KLI
 output, rc = ExecuteKLA(kla_bl_cmd)
