@@ -16,3 +16,4 @@ RUN wget https://bootstrap.pypa.io/get-pip.py && chmod +x ./get-pip.py && ./get-
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["python", "/kla.py"]
+
