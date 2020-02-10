@@ -16,11 +16,11 @@ import stat
 #PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
 #PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
 
-#PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
-#PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD'] 
-#PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT'] 
-#PARAM_KLA_SOURCEDIR = os.environ['HOME'] 
-#PARAM_KLA_MAXMEMORY = 'memory.max=2048m' #TODO: esto es tan importante??
+PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
+PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD'] 
+PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT'] 
+PARAM_KLA_SOURCEDIR = os.environ['GITHUB_WORKSPACE'] 
+PARAM_KLA_MAXMEMORY = 'memory.max=2048m' #TODO: esto es tan importante??
 
 print(os.environ)
 
