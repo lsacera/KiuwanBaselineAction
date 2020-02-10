@@ -24,6 +24,7 @@ inputs:
   databasetype:
     description: 'Database type files in the project, if any. Can be one of [none, transacsql, plsql, informix]'
     required: false
+    default: 'none'
   maxmemory:
     description: 'maximum memory allocated for java virtual machine heap, in megabytes. Example: 2048'
     required: false
