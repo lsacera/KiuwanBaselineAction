@@ -6,7 +6,10 @@ FROM openkbs/jre-mvn-py
 RUN mkdir /kla && wget https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip && unzip KiuwanLocalAnalyzer.zip -d /kla/.
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY baseline.sh /baseline.sh
+#COPY baseline.sh /baseline.sh
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY kla.py /kla.py
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/baseline.sh"]
+ENTRYPOINT ["/python kla.py"]
