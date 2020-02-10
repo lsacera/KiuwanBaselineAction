@@ -10,11 +10,18 @@ import sys
 import platform
 import stat
 
-PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
-PARAM_KLA_PASSWORD = 'password.0'
-PARAM_KLA_APPNAME = 'pepe'
-PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
-PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
+#PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
+#PARAM_KLA_PASSWORD = 'password.0'
+#PARAM_KLA_APPNAME = 'pepe'
+#PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
+#PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
+
+PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
+PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD'] 
+PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT'] 
+PARAM_KLA_SOURCEDIR = os.environ['HOME'] 
+PARAM_KLA_MAXMEMORY = 'memory.max=2048m' #TODO: esto es tan importante??
+
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
 TMP_EXTRACTION_DIR = 'temp'
