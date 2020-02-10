@@ -9,7 +9,9 @@ import os
 import sys
 import stat
 
-#print environment
+#print environment, and other testing...
+os.environ ['RESULTCODE'] = 'luis code'
+os.environ ['RESULTURL'] = 'luis url'
 print (os.environ)
 
 #PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
@@ -17,6 +19,8 @@ print (os.environ)
 #PARAM_KLA_APPNAME = 'pepe'
 #PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
 #PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
+
+""" comment everything ha ha ha
 
 #Params used in the call to the baseline analysis. TODO: check the parameters...
 PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
@@ -126,5 +130,5 @@ if rc == 0:
 else:
     print '{}{}{}'.format('Analysis finished with error code [', rc, ']')
 
-
+end comment """
 
