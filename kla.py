@@ -122,8 +122,9 @@ def ExecuteKLA(cmd):
 url_analysis = GetBLAnalysisResultsURL('A-7e4-170348e3b9e')
 print ('URL del analisis: ' , url_analysis)
 #fin de pruebas
-  
-  """ comentado para testing
+
+
+""" comentado para testing
 # Extract and download KLA from kiuwan.com (or from on-premise site)
 DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
@@ -142,6 +143,6 @@ if rc == 0:
     os.environ ['RESULTURL'] = url_analysis
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
-
+fin de pruebas """
 
 
