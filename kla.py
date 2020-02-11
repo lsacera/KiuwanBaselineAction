@@ -64,7 +64,7 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
 def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
     print ('Downloading KLA zip from ', klaurl, ' at [', os.getcwd(), ']', '...')
     resp = urllib.request.urlopen(klaurl)
-    zipf = zipfile.ZipFile(io.StringIO(resp.read()))
+    zipf = zipfile.ZipFile(io.BytesIO(resp.read()))
     for item in zipf.namelist():
         print("\tFile in zip: ",  item)
 
