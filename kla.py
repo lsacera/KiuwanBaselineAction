@@ -3,6 +3,7 @@ from StringIO import StringIO
 import subprocess
 import requests
 import urllib
+import io
 import json
 import base64
 import os
@@ -71,7 +72,7 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
 def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
     print 'Downloading KLA zip from ' + klaurl + ' at [' + os.getcwd() + ']' + '...'
     resp = urllib.urlopen(klaurl)
-    zipfile = ZipFile(StringIO(resp.read()))
+    zipfile = ZipFile(io.StringIO(resp.read()))
     for item in zipfile.namelist():
         print("\tFile in zip: "+  item)
 
