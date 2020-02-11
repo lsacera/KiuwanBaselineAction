@@ -118,6 +118,12 @@ def ExecuteKLA(cmd):
     rc = pipe.wait()
     return output, rc
 
+#pruebaaaas
+url_analysis = GetBLAnalysisResultsURL('A-7e4-170348e3b9e')
+print ('URL del analisis: ' , url_analysis)
+#fin de pruebas
+  
+  """ comentado para testing
 # Extract and download KLA from kiuwan.com (or from on-premise site)
 DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
