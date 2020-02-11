@@ -18,5 +18,5 @@ COPY kla.py /kla.py
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`). 
 # sudo to be able to bypass the permission error
-ENTRYPOINT ["sudo python3", "/kla.py"]
+ENTRYPOINT ["sudo", "python3", "/kla.py"]
 
