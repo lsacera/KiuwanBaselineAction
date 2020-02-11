@@ -8,6 +8,7 @@ import base64
 import os
 import sys
 import stat
+from pathlib import Path
 
 #PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
 #PARAM_KLA_PASSWORD = 'password.0'
@@ -69,10 +70,9 @@ def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
         print("\tFile in zip: ",  item)
 
     print ('Extracting zip to [' , tmp_dir , ']' , '...')
-    
-    if not os.path.exists(tmp_dir):
-      os.makedirs(tmp_dir)
-    
+    #Luis: para probar crear dirs
+    Path(tmp_dir).mkdir(parents=True, exist_ok=True)
+      
     zipf.extractall(tmp_dir)
 
 
