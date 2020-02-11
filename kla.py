@@ -84,7 +84,7 @@ def GetBLAnalysisCodeFromKLAOutput( output ):
 
 def GetBLAnalysisResultsURL(analysis_code, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD ): 
     auth_str = '%s:%s' % (kla_user, kla_password)
-    b64_auth_str = base64.b64encode(auth_str)
+    b64_auth_str = base64.b64encode(auth_str.encode())
     headers = {'Authorization': 'Basic %s' % b64_auth_str}
 
     apicall = "https://api.kiuwan.com/apps/analysis/" + analysis_code
