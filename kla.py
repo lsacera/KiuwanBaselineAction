@@ -83,13 +83,15 @@ def GetBLAnalysisCodeFromKLAOutput( output ):
     return output.split("Analysis created in Kiuwan with code:",1)[1].split()[0]
 
 def GetBLAnalysisResultsURL(analysis_code, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD ): 
-    auth_str = '%s:%s' % (kla_user, kla_password)
-    b64_auth_str = base64.b64encode(auth_str.encode())
-    headers = {'Authorization': 'Basic %s' % b64_auth_str}
+    #auth_str = ('%s:%s' % (kla_user, kla_password))
+    #b64_auth_str = base64.b64encode(auth_str.encode('ascii'))
+    #headers = {'Authorization': 'Basic %s' % b64_auth_str}
 
     apicall = "https://api.kiuwan.com/apps/analysis/" + analysis_code
     print ('Calling REST API [' , apicall , '] ...')
-    response = requests.get(apicall, headers=headers)
+   # response = requests.get(apicall, headers=headers)
+    
+    response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
     
     print (response)
     print ('Contenido' , response.content)
