@@ -62,13 +62,13 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
 
 
 def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
-    print 'Downloading KLA zip from ' + klaurl + ' at [' + os.getcwd() + ']' + '...'
+    print ('Downloading KLA zip from ', klaurl, ' at [', os.getcwd(), ']', '...')
     resp = urllib.urlopen(klaurl)
     zipf = zipfile.ZipFile(io.StringIO(resp.read()))
     for item in zipf.namelist():
-        print("\tFile in zip: "+  item)
+        print("\tFile in zip: ",  item)
 
-    print 'Extracting zip to [' + tmp_dir + ']' + '...'
+    print ('Extracting zip to [' , tmp_dir , ']' , '...')
     zipf.extractall(tmp_dir)
 
 
@@ -81,17 +81,17 @@ def GetBLAnalysisResultsURL(analysis_code, kla_user=PARAM_KLA_USERNAME, kla_pass
     headers = {'Authorization': 'Basic %s' % b64_auth_str}
 
     apicall = "https://api.kiuwan.com/apps/analysis/" + analysis_code
-    print 'Calling REST API [' + apicall + '] ...'
+    print ('Calling REST API [' , apicall , '] ...')
     response = requests.get(apicall, headers=headers)
     
-    print response
-    print 'Contenido' + response.content
+    print (response)
+    print ('Contenido' , response.content)
     jdata = json.loads(response.content)
-    #print 'URL del analisis: ' + jdata['analysisURL']
+    #print ('URL del analisis: ' , jdata['analysisURL'])
     return jdata['analysisURL']
 
 def ExecuteKLA(cmd):
-    print 'Executing [' + cmd + '] ...'
+    print ('Executing [' , cmd , '] ...')
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     #(output, err) = pipe.communicate()
     output = ''
@@ -115,15 +115,15 @@ kla_bl_cmd = GetKLACmd(tmp_dir='/kla', mem=PARAM_KLA_MAXMEMORY)
 # Execute CLA KLI
 output, rc = ExecuteKLA(kla_bl_cmd)
 if rc == 0:
-    print '{}{}'.format('KLA return code: ', rc)
+    print ('{}{}'.format('KLA return code: ', rc))
     analysis_code = GetBLAnalysisCodeFromKLAOutput(output)
-    print 'Analysis code [' + analysis_code + ']'
+    print ('Analysis code [' , analysis_code , ']')
     os.environ ['RESULTCODE'] = analysis_code
     url_analysis = GetBLAnalysisResultsURL(analysis_code)
-    print 'URL del analisis: ' + url_analysis
+    print ('URL del analisis: ' , url_analysis)
     os.environ ['RESULTURL'] = url_analysis
 else:
-    print '{}{}{}'.format('Analysis finished with error code [', rc, ']')
+    print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 
 #print environment, the results should be there
 print (os.environ)
