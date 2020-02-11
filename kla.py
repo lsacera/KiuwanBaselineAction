@@ -69,6 +69,10 @@ def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
         print("\tFile in zip: ",  item)
 
     print ('Extracting zip to [' , tmp_dir , ']' , '...')
+    
+    if not os.path.exists(tmp_dir):
+      os.makedirs(tmp_dir)
+    
     zipf.extractall(tmp_dir)
 
 
