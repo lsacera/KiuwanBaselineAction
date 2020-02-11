@@ -102,7 +102,7 @@ def ExecuteKLA(cmd):
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     #(output, err) = pipe.communicate()
     output = ''
-    try
+    try:
       while True:
           nextline = pipe.stdout.readline()
           if nextline == '' and pipe.poll() is not None:
