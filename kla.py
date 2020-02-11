@@ -11,7 +11,9 @@ import stat
 from pathlib import Path
 
 #print environment, the results should be there
+print("--------------------- ENVIRONMENT ------------------------")
 print (os.environ)
+print("--------------------- ENVIRONMENT ------------------------")
 
 #Params used in the call to the baseline analysis. TODO: check the parameters...
 PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
@@ -128,4 +130,7 @@ else:
 
 
 #print environment, the results should be there
+print("--------------------- ENVIRONMENT ------------------------")
 print (os.environ)
+print("--------------------- ENVIRONMENT ------------------------")
+quit()
