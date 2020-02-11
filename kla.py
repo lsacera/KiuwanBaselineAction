@@ -9,18 +9,11 @@ import os
 import sys
 import stat
 
-#print environment, and other testing...
-os.environ ['RESULTCODE'] = 'luis code'
-os.environ ['RESULTURL'] = 'luis url'
-print (os.environ)
-
 #PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
 #PARAM_KLA_PASSWORD = 'password.0'
 #PARAM_KLA_APPNAME = 'pepe'
 #PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
 #PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
-
-""" comment everything ha ha ha
 
 #Params used in the call to the baseline analysis. TODO: check the parameters...
 PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
@@ -125,10 +118,13 @@ if rc == 0:
     print '{}{}'.format('KLA return code: ', rc)
     analysis_code = GetBLAnalysisCodeFromKLAOutput(output)
     print 'Analysis code [' + analysis_code + ']'
+    os.environ ['RESULTCODE'] = analysis_code
     url_analysis = GetBLAnalysisResultsURL(analysis_code)
     print 'URL del analisis: ' + url_analysis
+    os.environ ['RESULTURL'] = url_analysis
 else:
     print '{}{}{}'.format('Analysis finished with error code [', rc, ']')
 
-end comment """
+#print environment, the results should be there
+print (os.environ)
 
