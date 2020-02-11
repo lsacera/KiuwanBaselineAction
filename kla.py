@@ -138,10 +138,10 @@ print("--------------------- ENVIRONMENT ------------------------")
 #testing, not invoking kiuwan
 analysis_code = 'A-7e4-17034858ff4'
 url_analysis = GetBLAnalysisResultsURL(analysis_code)
-result_str = '::set-output name=result::'+analysis_code
-url_str = '::set-output name=analysisurl::'+url_analysis
-sys.stdout.write(result_str.decode('utf-8'))
-sys.stdout.write(url_str.decode('utf-8'))
+resultstr = '::set-output name=result::'+analysis_code
+urlstr = '::set-output name=analysisurl::'+url_analysis
+sys.stdout.write(resultstr.decode('utf-8'))
+sys.stdout.write(urlstr.decode('utf-8'))
 sys.stdout.flush()
 
 quit()
