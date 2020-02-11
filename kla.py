@@ -133,4 +133,12 @@ else:
 print("--------------------- ENVIRONMENT ------------------------")
 print (os.environ)
 print("--------------------- ENVIRONMENT ------------------------")
+
+#test to set the output parameters...
+result_str = '::set-output name=result::'+rc
+url_str = '::set-output name=analysisurl::'+rc
+sys.stdout.write(result_str.decode('utf-8'))
+sys.stdout.write(url_str.decode('utf-8'))
+sys.stdout.flush()
+
 quit()
