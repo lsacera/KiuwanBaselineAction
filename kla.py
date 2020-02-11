@@ -1,8 +1,9 @@
-from urllib import urlopen
+#from urllib import urlopen
 from zipfile import ZipFile
 from StringIO import StringIO
 import subprocess
 import requests
+import urllib
 import json
 import base64
 import os
@@ -52,7 +53,7 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
 
 def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
     print 'Downloading KLA zip from ' + klaurl + ' at [' + os.getcwd() + ']' + '...'
-    resp = urlopen(klaurl)
+    resp = urllib.urlopen(klaurl)
     zipfile = ZipFile(StringIO(resp.read()))
     for item in zipfile.namelist():
         print("\tFile in zip: "+  item)
