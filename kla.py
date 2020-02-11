@@ -106,8 +106,8 @@ def ExecuteKLA(cmd):
         nextline = pipe.stdout.readline()
         if nextline == '' and pipe.poll() is not None:
             break
-        output = output + nextline
-        sys.stdout.write(nextline)
+        output = output + nextline.decode('utf-8')
+        sys.stdout.write(nextline.decode('utf-8'))
         sys.stdout.flush()
    
     rc = pipe.wait()
