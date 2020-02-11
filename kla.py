@@ -102,14 +102,17 @@ def ExecuteKLA(cmd):
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     #(output, err) = pipe.communicate()
     output = ''
-    while True:
-        nextline = pipe.stdout.readline()
-        if nextline == '' and pipe.poll() is not None:
-            break
-        output = output + nextline.decode('utf-8')
-        sys.stdout.write(nextline.decode('utf-8'))
-        sys.stdout.flush()
-   
+    try
+      while True:
+          nextline = pipe.stdout.readline()
+          if nextline == '' and pipe.poll() is not None:
+             break
+          output = output + nextline.decode('utf-8')
+          sys.stdout.write(nextline.decode('utf-8'))
+          sys.stdout.flush()
+    except KeyboardInterrupt:
+      print ("Keyboard interrupt... que hago??")
+      
     rc = pipe.wait()
     return output, rc
 
