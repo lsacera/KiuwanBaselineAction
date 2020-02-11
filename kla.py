@@ -139,8 +139,13 @@ print("--------------------- ENVIRONMENT ------------------------")
 analysis_code = 'A-7e4-17034858ff4'
 url_analysis = GetBLAnalysisResultsURL(analysis_code)
 
+#set results as environment variables.
 print("::set-env name=RESULT::{}".format(analysis_code))
-print("::set-env name=ANALYSISURL::{}".format(analysis_code))
+print("::set-env name=ANALYSISURL::{}".format(url_analysis))
+
+#set results as output parameters
+print("::set-output name=result::{}".format(analysis_code))
+print("::set-env name=analysisurl::{}".format(url_analysis))
 
 #this seems to be needed to finish the python thing.
 quit()
