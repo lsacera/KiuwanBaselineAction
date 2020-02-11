@@ -14,7 +14,7 @@ COPY kla.py /kla.py
 
 # Installs pip, and the requests module
 #RUN wget https://bootstrap.pypa.io/get-pip.py && chmod +x ./get-pip.py && ./get-pip.py && pip install requests 
-RUN pip install requests
+#RUN pip install requests
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["python3", "/kla.py"]
