@@ -33,7 +33,7 @@ PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
 print ('user:',PARAM_KLA_USERNAME, 'appname:',PARAM_KLA_APPNAME,'sourcedir:',PARAM_KLA_SOURCEDIR ,'maxmem:', PARAM_KLA_MAXMEMORY,'includes:',PARAM_KLA_INCLUDEPATTERNS,'excludes:',PARAM_KLA_EXCLUDEPATTERNS ,'timeout:',PARAM_KLA_TIMEOUT,'database:',PARAM_KLA_DATABASETYPE)
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
-TMP_EXTRACTION_DIR = '/kla'
+TMP_EXTRACTION_DIR = './kla'
 KLA_EXE_DIR = TMP_EXTRACTION_DIR + "/KiuwanLocalAnalyzer/bin"
 
 
@@ -107,10 +107,10 @@ def ExecuteKLA(cmd):
     return output, rc
 
 # Extract and download KLA from kiuwan.com (or from on-premise site)
-DownloadAndExtractKLA(tmp_dir='/kla')
+DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
 # Build the KLA CLI command
-kla_bl_cmd = GetKLACmd(tmp_dir='/kla', mem=PARAM_KLA_MAXMEMORY)
+kla_bl_cmd = GetKLACmd(tmp_dir=TMP_EXTRACTION_DIR, mem=PARAM_KLA_MAXMEMORY)
 
 # Execute CLA KLI
 output, rc = ExecuteKLA(kla_bl_cmd)
