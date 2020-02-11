@@ -116,6 +116,7 @@ DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 kla_bl_cmd = GetKLACmd(tmp_dir=TMP_EXTRACTION_DIR, mem=PARAM_KLA_MAXMEMORY)
 
 # Execute CLA KLI
+"""
 output, rc = ExecuteKLA(kla_bl_cmd)
 if rc == 0:
     print ('{}{}'.format('KLA return code: ', rc))
@@ -128,15 +129,17 @@ if rc == 0:
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 
-
 #print environment, the results should be there
 print("--------------------- ENVIRONMENT ------------------------")
 print (os.environ)
 print("--------------------- ENVIRONMENT ------------------------")
+"""
 
-#test to set the output parameters...
-result_str = '::set-output name=result::'+rc
-url_str = '::set-output name=analysisurl::'+rc
+#testing, not invoking kiuwan
+analysis_code = 0
+url_analysis = GetBLAnalysisResultsURL(analysis_code)
+result_str = '::set-output name=result::'+analysis_code
+url_str = '::set-output name=analysisurl::'+url_analysis
 sys.stdout.write(result_str.decode('utf-8'))
 sys.stdout.write(url_str.decode('utf-8'))
 sys.stdout.flush()
