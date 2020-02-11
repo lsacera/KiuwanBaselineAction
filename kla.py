@@ -1,5 +1,4 @@
-from zipfile import ZipFile
-from StringIO import StringIO
+import zipfile
 import subprocess
 import requests
 import urllib
@@ -72,12 +71,12 @@ def GetKLACmd( tmp_dir=TMP_EXTRACTION_DIR,
 def DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR, klaurl=KLA_URL ):
     print 'Downloading KLA zip from ' + klaurl + ' at [' + os.getcwd() + ']' + '...'
     resp = urllib.urlopen(klaurl)
-    zipfile = ZipFile(io.StringIO(resp.read()))
-    for item in zipfile.namelist():
+    zipf = zipfile.ZipFile(io.StringIO(resp.read()))
+    for item in zipf.namelist():
         print("\tFile in zip: "+  item)
 
     print 'Extracting zip to [' + tmp_dir + ']' + '...'
-    zipfile.extractall(tmp_dir)
+    zipf.extractall(tmp_dir)
 
 
 def GetBLAnalysisCodeFromKLAOutput( output ):
