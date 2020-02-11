@@ -135,19 +135,12 @@ print (os.environ)
 print("--------------------- ENVIRONMENT ------------------------")
 """
 
-#testing, not invoking kiuwan
+#testing, not invoking kiuwan, remove after using...
 analysis_code = 'A-7e4-17034858ff4'
 url_analysis = GetBLAnalysisResultsURL(analysis_code)
-resultstr = '::set-output name=result::'+analysis_code
-urlstr = '::set-output name=analysisurl::'+url_analysis
 
-print('---------------------------------')
-print('resultstr',resultstr)
-print('urlstr',urlstr)
-print('---------------------------------')
+print("::set-env name=RESULT:{}".format(analysis_code))
+print("::set-env name=ANALYSISURL:{}".format(analysis_code))
 
-sys.stdout.write(resultstr.decode('utf-8'))
-sys.stdout.write(urlstr.decode('utf-8'))
-sys.stdout.flush()
-
+#this seems to be needed to finish the python thing.
 quit()
