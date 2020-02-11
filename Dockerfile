@@ -18,5 +18,5 @@ COPY kla.py /kla.py
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`). 
 # sudo to be able to create folders in the container; -E to preserver environment variables
-ENTRYPOINT ["sudo", "-E", "python3", "/kla.py"]
+ENTRYPOINT ["python3", "/kla.py"]
 
