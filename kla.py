@@ -16,6 +16,9 @@ from pathlib import Path
 #PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
 #PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
 
+#print environment, the results should be there
+print (os.environ)
+
 #Params used in the call to the baseline analysis. TODO: check the parameters...
 PARAM_KLA_USERNAME = os.environ['INPUT_USERID'] 
 PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD'] 
@@ -129,6 +132,5 @@ if rc == 0:
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 
-#print environment, the results should be there
-print (os.environ)
+
 
