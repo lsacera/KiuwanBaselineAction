@@ -10,12 +10,6 @@ import sys
 import stat
 from pathlib import Path
 
-#PARAM_KLA_USERNAME = 'luis.garcia@kiuwan.com'
-#PARAM_KLA_PASSWORD = 'password.0'
-#PARAM_KLA_APPNAME = 'pepe'
-#PARAM_KLA_SOURCEDIR = 'D:\D_LGV\_support\Kiuwan\lgv'
-#PARAM_KLA_MAXMEMORY = 'memory.max=2048m'
-
 #print environment, the results should be there
 print (os.environ)
 
@@ -34,7 +28,7 @@ PARAM_KLA_TIMEOUT = os.environ['INPUT_TIMEOUT']
 PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
 
 #Log parameters
-print ('user:',PARAM_KLA_USERNAME, 'appname:',PARAM_KLA_APPNAME,'sourcedir:',PARAM_KLA_SOURCEDIR ,'maxmem:', PARAM_KLA_MAXMEMORY,'includes:',PARAM_KLA_INCLUDEPATTERNS,'excludes:',PARAM_KLA_EXCLUDEPATTERNS ,'timeout:',PARAM_KLA_TIMEOUT,'database:',PARAM_KLA_DATABASETYPE)
+#print ('user:',PARAM_KLA_USERNAME, 'appname:',PARAM_KLA_APPNAME,'sourcedir:',PARAM_KLA_SOURCEDIR ,'maxmem:', PARAM_KLA_MAXMEMORY,'includes:',PARAM_KLA_INCLUDEPATTERNS,'excludes:',PARAM_KLA_EXCLUDEPATTERNS ,'timeout:',PARAM_KLA_TIMEOUT,'database:',PARAM_KLA_DATABASETYPE)
 
 KLA_URL = 'https://www.kiuwan.com/pub/analyzer/KiuwanLocalAnalyzer.zip'
 TMP_EXTRACTION_DIR = os.environ['WORKSPACE']  + '/kla'
@@ -83,14 +77,9 @@ def GetBLAnalysisCodeFromKLAOutput( output ):
     return output.split("Analysis created in Kiuwan with code:",1)[1].split()[0]
 
 def GetBLAnalysisResultsURL(analysis_code, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD ): 
-    #auth_str = ('%s:%s' % (kla_user, kla_password))
-    #b64_auth_str = base64.b64encode(auth_str.encode('ascii'))
-    #headers = {'Authorization': 'Basic %s' % b64_auth_str}
-
     apicall = "https://api.kiuwan.com/apps/analysis/" + analysis_code
     print ('Calling REST API [' , apicall , '] ...')
-   # response = requests.get(apicall, headers=headers)
-    
+  
     response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
     
     print (response)
@@ -118,13 +107,6 @@ def ExecuteKLA(cmd):
     rc = pipe.wait()
     return output, rc
 
-#pruebaaaas
-url_analysis = GetBLAnalysisResultsURL('A-7e4-170348e3b9e')
-print ('URL del analisis: ' , url_analysis)
-#fin de pruebas
-
-
-""" comentado para testing
 # Extract and download KLA from kiuwan.com (or from on-premise site)
 DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
@@ -143,6 +125,7 @@ if rc == 0:
     os.environ ['RESULTURL'] = url_analysis
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
-fin de pruebas """
 
 
+#print environment, the results should be there
+print (os.environ)
