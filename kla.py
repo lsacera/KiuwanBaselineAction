@@ -136,7 +136,7 @@ print("--------------------- ENVIRONMENT ------------------------")
 """
 
 #testing, not invoking kiuwan
-analysis_code = 0
+analysis_code = '0'
 url_analysis = GetBLAnalysisResultsURL(analysis_code)
 result_str = '::set-output name=result::'+analysis_code
 url_str = '::set-output name=analysisurl::'+url_analysis
