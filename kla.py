@@ -125,3 +125,4 @@ if rc == 0:
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 print("adios caracola")
+sys.exit()
