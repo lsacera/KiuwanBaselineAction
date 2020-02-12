@@ -112,24 +112,18 @@ DownloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 # Build the KLA CLI command
 kla_bl_cmd = GetKLACmd(tmp_dir=TMP_EXTRACTION_DIR, mem=PARAM_KLA_MAXMEMORY)
 
-# Execute CLA KLI
+# Execute CLA KLI and set results as outputs 
 output, rc = ExecuteKLA(kla_bl_cmd)
+print("::set-output name=result::{}".format(rc))
 if rc == 0:
     print ('{}{}'.format('KLA return code: ', rc))
     analysis_code = GetBLAnalysisCodeFromKLAOutput(output)
     print ('Analysis code [' , analysis_code , ']')
     url_analysis = GetBLAnalysisResultsURL(analysis_code)
     print ('URL del analisis: ' , url_analysis)
+    print("::set-env name=analysisurl::{}".format(url_analysis))
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
-
-#set results as environment variables. Not used anymore
-#print("::set-env name=RESULT::{}".format(0))
-#print("::set-env name=ANALYSISURL::{}".format(url_analysis))
-
-#set results as output parameters
-print("::set-output name=result::{}".format(0))
-print("::set-env name=analysisurl::{}".format(url_analysis))
 
 #this seems to be needed to finish the python thingy.
 quit()
