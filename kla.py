@@ -124,6 +124,4 @@ if rc == 0:
     print("::set-output name=analysisurl::{}".format(url_analysis)
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
-   
-
 print("adios caracola")
