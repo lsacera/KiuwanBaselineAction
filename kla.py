@@ -104,7 +104,7 @@ def ExecuteKLA(cmd):
           sys.stdout.write(nextline.decode('utf-8'))
           sys.stdout.flush()
     except KeyboardInterrupt:
-      print ("Keyboard interrupt... que hago??")
+      print ("Keyboard interrupt... finishing the pipe")
       
     rc = pipe.wait()
     return output, rc
@@ -122,17 +122,11 @@ if rc == 0:
     print ('{}{}'.format('KLA return code: ', rc))
     analysis_code = GetBLAnalysisCodeFromKLAOutput(output)
     print ('Analysis code [' , analysis_code , ']')
-    os.environ ['RESULTCODE'] = analysis_code
     url_analysis = GetBLAnalysisResultsURL(analysis_code)
     print ('URL del analisis: ' , url_analysis)
-    os.environ ['RESULTURL'] = url_analysis
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 
-#print environment, the results should be there
-print("--------------------- ENVIRONMENT ------------------------")
-print (os.environ)
-print("--------------------- ENVIRONMENT ------------------------")
 """
 
 #testing, not invoking kiuwan, remove after using...
@@ -140,12 +134,12 @@ analysis_code = 'A-7e4-17034858ff4'
 url_analysis = GetBLAnalysisResultsURL(analysis_code)
 
 #set results as environment variables.
-print("::set-env name=RESULT::{}".format(analysis_code))
-print("::set-env name=ANALYSISURL::{}".format(url_analysis))
+#print("::set-env name=RESULT::{}".format(0))
+#print("::set-env name=ANALYSISURL::{}".format(url_analysis))
 
 #set results as output parameters
-print("::set-output name=result::{}".format(analysis_code))
+print("::set-output name=result::{}".format(0))
 print("::set-env name=analysisurl::{}".format(url_analysis))
 
-#this seems to be needed to finish the python thing.
+#this seems to be needed to finish the python thingy.
 quit()
