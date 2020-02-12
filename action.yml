@@ -1,10 +1,11 @@
 name: 'Kiuwan Baseline Analysis'
 author: 'Kiuwan'
-description: 'Run Kiuwan Baseline analysis on the selected set of code'
+description: 'Run Kiuwan Baseline analysis on the repository executing the action'
 inputs:
   project:
     description: 'Name of Kiuwan project'
-    required: true
+    required: false
+    default: ${{ github.repository }}
   label:
     description: 'Label of the analysis'
     required: false
