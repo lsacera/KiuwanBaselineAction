@@ -94,7 +94,6 @@ def executeKLA(cmd):
     pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     # (output, err) = pipe.communicate()
     output_test = ''
-    return_code
     try:
       nextline = pipe.stdout.readline()
       while (pipe.poll() is not None) and (not nextline):
@@ -106,7 +105,7 @@ def executeKLA(cmd):
         print("Keyboard interrupt... finishing the pipe")
         
     #return_code = pipe.wait()
-    return output_test, return_code
+    return output_test, pipe.returncode
 
 
 # Actual executing code after defining the functions
