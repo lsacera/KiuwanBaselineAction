@@ -129,5 +129,3 @@ if rc == 0:
 else:
     print('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
 
-print("end python script")
-
