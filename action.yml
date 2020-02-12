@@ -9,7 +9,7 @@ inputs:
   label:
     description: 'Label of the analysis'
     required: false
-    default: ' '
+    default: ${{ github.run_number }}
   userid:
     description: 'Username for kiuwan platform'
     required: true
