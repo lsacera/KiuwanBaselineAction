@@ -6,4 +6,4 @@ COPY kla.py /kla.py
 
 # Code file to execute when the docker container starts up, python script
 #ENTRYPOINT ["python3", "/kla.py"]
-CMD ["python3,"/kla.py"]
+CMD ["python3","/kla.py"]
