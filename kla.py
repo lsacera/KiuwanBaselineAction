@@ -102,7 +102,7 @@ def ExecuteKLA(cmd):
     except KeyboardInterrupt:
       print ("Keyboard interrupt... finishing the pipe")
       
-    rc = pipe.wait()
+    #rc = pipe.wait()
     return output, rc
 
 #Actual executing code after defining the functions  
