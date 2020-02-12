@@ -117,7 +117,7 @@ downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR, mem=PARAM_KLA_MAXMEMORY)
 
 # Execute CLA KLI and set results as outputs
-output, rc = ExecuteKLA(kla_bl_cmd)
+output, rc = executeKLA(kla_bl_cmd)
 print("::set-output name=result::{}".format(rc))
 if rc == 0:
     print('{}{}'.format('KLA return code: ', rc))
