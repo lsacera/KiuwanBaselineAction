@@ -91,12 +91,13 @@ def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM
 # Function to excetute the actual Kiuwan Local Analyzer command line and get the resutls.
 def executeKLA(cmd):
     print('Executing [', cmd, '] ...')
-    pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    #pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    pipe = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     # (output, err) = pipe.communicate()
     output_text = ''
     try:
       nextline = pipe.stdout.readline()
-      while (pipe.poll() is None) or (not nextline):
+      while (pipe.poll() == None):
             output_text = output_text + nextline.decode('utf-8')
             sys.stdout.write(nextline.decode('utf-8'))
             sys.stdout.flush()
@@ -120,9 +121,9 @@ output, rc = executeKLA(kla_bl_cmd)
 print("::set-output name=result::{}".format(rc))
 if rc == 0:
     print('{}{}'.format('KLA return code: ', rc))
-    analysis_code = GetBLAnalysisCodeFromKLAOutput(output)
+    analysis_code = getBLAnalysisCodeFromKLAOutput(output)
     print('Analysis code [', analysis_code, ']')
-    url_analysis = GetBLAnalysisResultsURL(analysis_code)
+    url_analysis = getBLAnalysisResultsURL(analysis_code)
     print('URL del analisis: ', url_analysis)
     print("::set-output name=analysisurl::{}".format(url_analysis))
 else:
