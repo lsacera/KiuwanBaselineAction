@@ -91,8 +91,7 @@ def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM
 # Function to excetute the actual Kiuwan Local Analyzer command line and get the resutls.
 def executeKLA(cmd):
     print('Executing [', cmd, '] ...')
-    #pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-    pipe = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    pipe = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     # (output, err) = pipe.communicate()
     output_text = ''
     try:
@@ -103,7 +102,8 @@ def executeKLA(cmd):
             sys.stdout.flush()
             nextline = pipe.stdout.readline()
     except KeyboardInterrupt:
-        print("Keyboard interrupt... finishing the pipe")
+        print("Keyboard interrupt... why??")
+        return output_text, pipe.returncode
         
     #return_code = pipe.wait()
     return output_text, pipe.returncode
