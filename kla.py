@@ -122,8 +122,11 @@ if rc == 0:
     url_analysis = GetBLAnalysisResultsURL(analysis_code)
     print ('URL del analisis: ' , url_analysis)
     print("::set-env name=analysisurl::{}".format(url_analysis))
+    #testing
+    quit()
 else:
     print ('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
+    #testing
+    quit()
 
-#this seems to be needed to finish the python thingy.
-quit()
+
