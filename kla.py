@@ -108,7 +108,7 @@ def executeKLA(cmd):
 downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
 # Build the KLA CLI command
-kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR, mem=PARAM_KLA_MAXMEMORY)
+kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR)
 
 # Execute CLA KLI and set results as outputs
 output, rc = executeKLA(kla_bl_cmd)
