@@ -20,6 +20,10 @@ inputs:
     description: 'Database type files in the project, if any. Can be one or more of [none, transacsql, plsql, informix]'
     required: false
     default: 'none'
+  advancedparams:
+    description: 'Rest of parameters to use in the Kiuwan Local Analyzer. Please review documentation to see format at https://www.kiuwan.com/docs/display/K5/Kiuwan+Local+Analyzer+CLI+-+Command+Line+Interface'
+    required: false
+    default:''
 
 outputs:
   result:
