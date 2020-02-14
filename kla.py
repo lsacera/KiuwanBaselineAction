@@ -72,7 +72,7 @@ def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM
     if not PARAM_KLA_BASEURL:
       apicall = PARAM_KLA_BASEURL + "/saas/rest/v1"
     
-    apicall = apicall + "/apps/analysis/" + a_c"
+    apicall = apicall + "/apps/analysis/" + a_c
     print('Calling REST API [', apicall, '] ...')
 
     response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
