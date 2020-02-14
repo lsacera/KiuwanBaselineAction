@@ -69,7 +69,7 @@ def getBLAnalysisCodeFromKLAOutput(output_to_parse):
 # Function to call the Kiuwan API to get the actual URL
 def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD):
     apicall = "https://api.kiuwan.com"
-    if not PARAM_KLA_BASEURL
+    if not PARAM_KLA_BASEURL:
       apicall = PARAM_KLA_BASEURL + "/saas/rest/v1"
     
     apicall = apicall + "/apps/analysis/" + a_c"
