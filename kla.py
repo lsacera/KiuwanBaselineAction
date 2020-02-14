@@ -70,7 +70,7 @@ def getBLAnalysisCodeFromKLAOutput(output_to_parse):
 def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD):
     apicall = "https://api.kiuwan.com"
     if not PARAM_KLA_BASEURL
-      apicall = PARAM_KLA_BASEURL 
+      apicall = PARAM_KLA_BASEURL + "/saas/rest/v1"
     
     apicall = apicall + "/apps/analysis/" + a_c"
     print('Calling REST API [', apicall, '] ...')
