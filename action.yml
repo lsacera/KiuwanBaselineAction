@@ -5,7 +5,7 @@ inputs:
   kiuwanbaseurl:
     description: 'Base URL of the kiuwan server. Empty to go to kiuwan.com SaaS version. Example: https://myserver.com'
     required: false
-    default: ''
+    default: 'https://www.kiuwan.com'
   project:
     description: 'Name of Kiuwan project'
     required: false
