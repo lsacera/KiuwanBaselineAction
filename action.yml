@@ -2,6 +2,10 @@ name: 'Kiuwan Baseline Analysis'
 author: 'Kiuwan'
 description: 'Run Kiuwan Baseline analysis on the repository executing the action'
 inputs:
+  kiuwanbaseurl:
+    description: 'Base URL of the kiuwan server. Empty to go to kiuwan.com SaaS version. Example: https://myserver.com'
+    required: false
+    default: ''
   project:
     description: 'Name of Kiuwan project'
     required: false
