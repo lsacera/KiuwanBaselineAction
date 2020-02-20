@@ -113,13 +113,65 @@ kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR)
 # Execute CLA KLI and set results as outputs
 output, rc = executeKLA(kla_bl_cmd)
 print("::set-output name=result::{}".format(rc))
-if rc == 0:
-    print('{}{}'.format('KLA return code: ', rc))
-    analysis_code = getBLAnalysisCodeFromKLAOutput(output)
-    print('Analysis code [', analysis_code, ']')
-    url_analysis = getBLAnalysisResultsURL(analysis_code)
-    print('URL del analisis: ', url_analysis)
-    print("::set-output name=analysisurl::{}".format(url_analysis))
-else:
-    print('{}{}{}'.format('Analysis finished with error code [', rc, ']'))
-
+print('{}{}'.format('KLA return code: ', rc))
+if rc==0:
+  analysis_code = getBLAnalysisCodeFromKLAOutput(output)
+  print('Analysis code [', analysis_code, ']')
+  url_analysis = getBLAnalysisResultsURL(analysis_code)
+  print('URL del analisis: ', url_analysis)
+  print("::set-output name=analysisurl::{}".format(url_analysis))
+  print("::set-output name=message::{}".format('Analysis successful.'))
+elif rc == 1:
+  print("::set-output name=message::{}".format('Analyzer execution error.'))
+elif rc == 10:
+  #we should not be here, this is a baseline
+  print("::set-output name=message::{}".format('Audit overall result = FAIL.'))
+elif rc == 11:
+  print("::set-output name=message::{}".format('Invalid analysis configuration.'))
+elif rc == 12:
+  print("::set-output name=message::{}".format('The downloaded model does not support any of the discovered languages.'))
+elif rc == 13:
+  #we should not be here, this is a baseline
+  print("::set-output name=message::{}".format('Timeout waiting for analysis results.'))
+elif rc == 14:
+  print("::set-output name=message::{}".format('Analysis finished with an error in Kiuwan.'))
+elif rc == 15:
+  print("::set-output name=message::{}".format('Timeout: killed the subprocess.'))
+elif rc == 16:
+  print("::set-output name=message::{}".format('Baseline analysis not permitted for current user.'))
+elif rc == 17:
+  #we should not be here, this is a delivery
+  print("::set-output name=message::{}".format('Delivery analysis not permitted for current user.'))
+elif rc == 18:
+  print("::set-output name=message::{}".format('No analyzable extensions found.'))
+elif rc == 19:
+  print("::set-output name=message::{}".format('Error checking license.'))
+elif rc == 21:
+  print("::set-output name=message::{}".format('Invalid CLI parameter	.'))
+elif rc == 22:
+  print("::set-output name=message::{}".format('Access denied.'))  
+elif rc == 23:
+  print("::set-output name=message::{}".format('Bad Credentials.'))  
+elif rc == 24:
+  print("::set-output name=message::{}".format('Application Not Found.'))  
+elif rc == 25:
+  print("::set-output name=message::{}".format('Limit Exceeded for Calls to Kiuwan API.'))  
+elif rc == 26:
+  print("::set-output name=message::{}".format('Quota Limit Reached	.'))  
+elif rc == 27:
+  print("::set-output name=message::{}".format('Analysis Not Found.'))  
+elif rc == 28:
+  print("::set-output name=message::{}".format('Application already exists.'))  
+elif rc == 30:
+  #we should not be here, this is a baseline
+  print("::set-output name=message::{}".format('Delivery analysis not permitted: baseline analysis not found.'))  
+elif rc == 31:
+  print("::set-output name=message::{}".format('No engine available.'))  
+elif rc == 32:
+  print("::set-output name=message::{}".format('Unexpected error	.'))  
+elif rc == 33:
+  print("::set-output name=message::{}".format('Out of Memory.'))  
+elif rc == 34:
+  print("::set-output name=message::{}".format('JVM Error	.'))  
+else
+  print("::set-output name=message::{}-{}".format('No error message found for code ', rc))  
