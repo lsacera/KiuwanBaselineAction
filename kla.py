@@ -121,7 +121,7 @@ if rc==0:
   #print traces and set output parameters...
   print('URL del analisis: ', url_analysis)
   print("::set-output name=analysisurl::{}".format(url_analysis))
-  print('::set-output name=message::Delivery analysis successful.')
+  print('::set-output name=message::Analysis successful.')
 elif rc == 1:
   print('::set-output name=message::Analyzer execution error.')
 elif rc == 10:
