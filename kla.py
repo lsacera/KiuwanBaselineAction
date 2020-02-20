@@ -118,60 +118,59 @@ if rc==0:
   analysis_code = getBLAnalysisCodeFromKLAOutput(output)
   print('Analysis code [', analysis_code, ']')
   url_analysis = getBLAnalysisResultsURL(analysis_code)
+  #print traces and set output parameters...
   print('URL del analisis: ', url_analysis)
   print("::set-output name=analysisurl::{}".format(url_analysis))
-  print("::set-output name=message::{}".format('Analysis successful.'))
+  print('::set-output name=message::Delivery analysis successful.')
 elif rc == 1:
-  print("::set-output name=message::{}".format('Analyzer execution error.'))
+  print('::set-output name=message::Analyzer execution error.')
 elif rc == 10:
-  #we should not be here, this is a baseline
-  print("::set-output name=message::{}".format('Audit overall result = FAIL.'))
+  print('::set-output name=message::Audit overall result = FAIL.')
 elif rc == 11:
-  print("::set-output name=message::{}".format('Invalid analysis configuration.'))
+  print('::set-output name=message::Invalid analysis configuration.')
 elif rc == 12:
-  print("::set-output name=message::{}".format('The downloaded model does not support any of the discovered languages.'))
+  print('::set-output name=message::The downloaded model does not support any of the discovered languages.')
 elif rc == 13:
-  #we should not be here, this is a baseline
-  print("::set-output name=message::{}".format('Timeout waiting for analysis results.'))
+  print('::set-output name=message::Timeout waiting for analysis results.')
 elif rc == 14:
-  print("::set-output name=message::{}".format('Analysis finished with an error in Kiuwan.'))
+  print('::set-output name=message::Analysis finished with an error in Kiuwan.')
 elif rc == 15:
-  print("::set-output name=message::{}".format('Timeout: killed the subprocess.'))
+  print('::set-output name=message::Timeout: killed the subprocess.')
 elif rc == 16:
-  print("::set-output name=message::{}".format('Baseline analysis not permitted for current user.'))
+  print('::set-output name=message::Baseline analysis not permitted for current user.')
 elif rc == 17:
-  #we should not be here, this is a delivery
-  print("::set-output name=message::{}".format('Delivery analysis not permitted for current user.'))
+  print('::set-output name=message::Delivery analysis not permitted for current user.')
 elif rc == 18:
-  print("::set-output name=message::{}".format('No analyzable extensions found.'))
+  print('::set-output name=message::No analyzable extensions found.')
 elif rc == 19:
-  print("::set-output name=message::{}".format('Error checking license.'))
+  print('::set-output name=message::Error checking license.')
 elif rc == 21:
-  print("::set-output name=message::{}".format('Invalid CLI parameter	.'))
+  print('::set-output name=message::Invalid CLI parameter	.')
 elif rc == 22:
-  print("::set-output name=message::{}".format('Access denied.'))  
+  print('::set-output name=message::Access denied.')
 elif rc == 23:
-  print("::set-output name=message::{}".format('Bad Credentials.'))  
+  print('::set-output name=message::Bad Credentials.')
 elif rc == 24:
-  print("::set-output name=message::{}".format('Application Not Found.'))  
+  print('::set-output name=message::Application Not Found.')
 elif rc == 25:
-  print("::set-output name=message::{}".format('Limit Exceeded for Calls to Kiuwan API.'))  
+  print('::set-output name=message::Limit Exceeded for Calls to Kiuwan API.')
 elif rc == 26:
-  print("::set-output name=message::{}".format('Quota Limit Reached	.'))  
+  print('::set-output name=message::Quota Limit Reached	.')
 elif rc == 27:
-  print("::set-output name=message::{}".format('Analysis Not Found.'))  
+  print('::set-output name=message::Analysis Not Found.') 
 elif rc == 28:
-  print("::set-output name=message::{}".format('Application already exists.'))  
+  print('::set-output name=message::Application already exists.')
 elif rc == 30:
   #we should not be here, this is a baseline
-  print("::set-output name=message::{}".format('Delivery analysis not permitted: baseline analysis not found.'))  
+  print('::set-output name=message::Delivery analysis not permitted: baseline analysis not found.')
 elif rc == 31:
-  print("::set-output name=message::{}".format('No engine available.'))  
+  print('::set-output name=message::No engine available.')
 elif rc == 32:
-  print("::set-output name=message::{}".format('Unexpected error	.'))  
+  print('::set-output name=message::Unexpected error	.')
 elif rc == 33:
-  print("::set-output name=message::{}".format('Out of Memory.'))  
+  print('::set-output name=message::Out of Memory.')
 elif rc == 34:
-  print("::set-output name=message::{}".format('JVM Error	.'))  
-else
-  print("::set-output name=message::{}-{}".format('No error message found for code ', rc))  
+  print('::set-output name=message::JVM Error	.')
+else:
+  print('::set-output name=message::No error message found.')
+
