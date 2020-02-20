@@ -32,6 +32,8 @@ inputs:
 outputs:
   result:
     description: 'Return code of the execution of kiuwan'
+  message:
+    description: 'Return message of the execution of kiuwan'
   analysisurl:
     description: 'URL of the executed analysis'
 
