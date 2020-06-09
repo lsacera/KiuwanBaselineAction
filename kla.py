@@ -67,7 +67,7 @@ def getBLAnalysisCodeFromKLAOutput(output_to_parse):
 
 
 # Function to call the Kiuwan API to get the actual URL
-def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD):
+def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM_KLA_PASSWORD, advanced=PARAM_KLA_ADVANCEDPARAMS):
     apicall = "https://api.kiuwan.com"
     if not PARAM_KLA_BASEURL:
       apicall = PARAM_KLA_BASEURL + "/saas/rest/v1"
@@ -75,7 +75,24 @@ def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM
     apicall = apicall + "/apps/analysis/" + a_c
     print('Calling REST API [', apicall, '] ...')
 
-    response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
+    authString = base64.encodebytes(('%s:%s' % (kla_user,kla_password)).encode()).decode().strip()
+    
+    if "domain-id" in advanced:
+      posDomain = advanced.find("domain-id")
+      value_domain_id = advanced[posDomain+10:] ##remove domain-id word
+      posWhitespace = value_domain_id.find(" ")
+      if posWhitespace != -1:
+        value_domain_id = value_domain_id[:posWhitespace]
+      my_headers = {
+          "Authorization": 'Basic {}'.format(authString),
+          "X-KW-CORPORATE-DOMAIN-ID": value_domain_id
+      }
+    else:
+      my_headers = {
+        "Authorization": 'Basic {}'.format(authString)
+      }
+    response = requests.get(url=apicall,headers=my_headers)
+    #response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
 
     print(response)
     print('Contenido', response.content)
@@ -105,7 +122,7 @@ def executeKLA(cmd):
 
 # Actual executing code after defining the functions
 # Extract and download KLA from kiuwan.com (or from on-premise site)
-downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
+#downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
 # Build the KLA CLI command
 kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR)
