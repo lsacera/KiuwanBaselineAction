@@ -24,7 +24,7 @@ steps:
       - name: Checkout the repository
         uses: actions/checkout@v1
       - name: Kiuwan Baseline Analysis
-        uses: lsacera/KiuwanBaselineAction@v0.4
+        uses: lsacera/KiuwanBaselineAction@v1.0
         with:
           # Name of Kiuwan project
           project: Personalblog
