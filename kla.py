@@ -17,16 +17,16 @@ from pathlib import Path
 
 # Params used in the call to the baseline analysis.
 # All the parameters set in the action are stored as environment variables with INPUT_ prefix
-PARAM_KLA_BASEURL = os.environ['INPUT_KIUWANBASEURL']
-PARAM_KLA_USERNAME = os.environ['INPUT_USERID']
-PARAM_KLA_PASSWORD = os.environ['INPUT_PASSWORD']
-PARAM_KLA_APPNAME = os.environ['INPUT_PROJECT']
-PARAM_KLA_SOURCEDIR = os.environ['GITHUB_WORKSPACE']
-PARAM_KLA_DATABASETYPE = os.environ['INPUT_DATABASETYPE']
-PARAM_KLA_ADVANCEDPARAMS = os.environ['INPUT_ADVANCEDPARAMS']
+PARAM_KLA_BASEURL = "https://kiuwan.com"
+PARAM_KLA_USERNAME = "sebastian.revuelta@kiuwan.com"
+PARAM_KLA_PASSWORD = "platas$79"
+PARAM_KLA_APPNAME = "Chess"
+PARAM_KLA_SOURCEDIR = "C:/Users/eboronat/Desktop/githubactions/Chess"
+PARAM_KLA_DATABASETYPE = 'none'
+PARAM_KLA_ADVANCEDPARAMS = ''
 
 KLA_URL = PARAM_KLA_BASEURL + '/pub/analyzer/KiuwanLocalAnalyzer.zip'
-TMP_EXTRACTION_DIR = os.environ['WORKSPACE'] + '/kla'
+TMP_EXTRACTION_DIR = 'C:/Users/eboronat/Desktop'
 KLA_EXE_DIR = TMP_EXTRACTION_DIR + "/KiuwanLocalAnalyzer/bin"
 
 # Function to create the Kiuwan KLA line command.
@@ -40,7 +40,9 @@ def getKLACmd(tmp_dir=TMP_EXTRACTION_DIR,
               dbtype=PARAM_KLA_DATABASETYPE,
               advanced=PARAM_KLA_ADVANCEDPARAMS):
     prefix = tmp_dir + '/KiuwanLocalAnalyzer/bin/'
-    agent = prefix + 'agent.sh'
+    #agent = prefix + 'agent.sh'
+    agent = prefix + 'agent.cmd'
+    
     os.chmod(agent, stat.S_IRWXU)
 
     klablcmd = '{} -c -n {} -s {} --user {} --pass {} transactsql.parser.valid.list={} {}'.format(agent, appname, sourcedir, user, password, dbtype, advanced)
@@ -88,9 +90,9 @@ def getBLAnalysisResultsURL(a_c, kla_user=PARAM_KLA_USERNAME, kla_password=PARAM
           "X-KW-CORPORATE-DOMAIN-ID": value_domain_id
       }
     else:
-      my_headers = {
-        "Authorization": 'Basic {}'.format(authString)
-      }
+        my_headers = {
+            "Authorization": 'Basic {}'.format(authString)
+        }
     response = requests.get(url=apicall,headers=my_headers)
     #response = requests.get(apicall, auth=requests.auth.HTTPBasicAuth(kla_user, kla_password))
 
@@ -122,7 +124,7 @@ def executeKLA(cmd):
 
 # Actual executing code after defining the functions
 # Extract and download KLA from kiuwan.com (or from on-premise site)
-#downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
+downloadAndExtractKLA(tmp_dir=TMP_EXTRACTION_DIR)
 
 # Build the KLA CLI command
 kla_bl_cmd = getKLACmd(tmp_dir=TMP_EXTRACTION_DIR)
