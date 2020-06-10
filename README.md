@@ -17,7 +17,7 @@ Optional parameters:
 https://www.kiuwan.com/docs/display/K5/Kiuwan+Local+Analyzer+CLI+-+Command+Line+Interface
 
 (*) It is higly recommended to use the userid and password as "secrets" of the repository. The secrets can be defined in the Settings options of the repository.
-* Important note: We have notified that passwords with special characters as $, are not well propagated as github_secrets, so, we recommend not use special characters if you are using github secrets. * 
+(*) Important note: We have notified that passwords with special characters as $, are not well propagated as github_secrets, so, we recommend not use special characters if you are using github secrets. * 
 
 Example of basic usage as step in a workflow:
 ```
