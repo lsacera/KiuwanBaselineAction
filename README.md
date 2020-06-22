@@ -17,7 +17,7 @@ Optional parameters:
 https://www.kiuwan.com/docs/display/K5/Kiuwan+Local+Analyzer+CLI+-+Command+Line+Interface
 
 (*) It is higly recommended to use the userid and password as "secrets" of the repository. The secrets can be defined in the Settings options of the repository.
-### Important note: We have notified that passwords with special characters as $, are not well propagated as github_secrets, so, we recommend not use special characters if you are using github secrets.
+### Important note: We have notified that passwords with special characters as $, are not well propagated as github_secrets, so, we recommend not use special characters if you are using github secrets. Anyway, you can escape the special character when introducing the password into a github secret and there should be no problem. For example: pas\$word
 
 Example of basic usage as step in a workflow:
 ```
@@ -43,7 +43,7 @@ Example of basic usage with SSO authentication:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v1
     - name: Kiuwan Baseline Analysis
-      uses: lsacera/KiuwanBaselineAction@v1.0
+      uses: lsacera/KiuwanBaselineAction@v1.1
       with:
           # Name of Kiuwan project
           project: Chess
